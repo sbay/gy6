@@ -1,0 +1,3 @@
+@function rem_to_px($sizeValue: 1.0) {
+	@return $sizeValue * $font-size + px;
+}

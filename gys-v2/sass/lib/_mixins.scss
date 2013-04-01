@@ -1,0 +1,44 @@
+@mixin animation ($name: true, $duration: true, $timing_function: true, $delay: false, $iteration_count: false, $direction: false) {
+    @if $name { -webkit-animation-name: $name; -moz-animation-name: $name; -ms-animation-name: $name; }
+    @if $duration { -webkit-animation-duration: $duration; -moz-animation-duration: $duration; -ms-animation-duration: $duration; }
+    @if $timing_function { -webkit-animation-timing-function: $timing_function; -moz-animation-timing-function: $timing_function;  -ms-animation-timing-function: $timing_function; }
+    @if $delay { -webkit-animation-delay: $delay; -moz-animation-delay: $delay; -ms-animation-delay: $delay; }
+    @if $iteration_count { -webkit-animation-iteration-count: $iteration_count; -moz-animation-iteration-count: $iteration_count; -ms-animation-iteration-count: $iteration_count; }
+    @if $direction { -webkit-animation-direction: $direction; -moz-animation-direction: $direction; -ms-animation-direction: $direction; }
+}
+
+@mixin background-clip($clip) {
+    -webkit-background-clip: $clip;
+    -moz-background-clip: $clip;
+    -o-background-clip: $clip;
+    background-clip: $clip;
+}
+
+
+@mixin filter($filter) {
+    -webkit-filter: $filter;
+    -moz-filter: $filter;
+    -o-filter: $filter;
+    filter: $filter;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin displayfix {
+    *zoom: 1;
+    *display: inline;
+}
+
+@mixin font-size($sizeValue: 1.0){
+  font-size: ($sizeValue * $font-size) + px;
+  font-size: $sizeValue + rem;
+}
+
+@mixin fluid {
+	width: 100%; height: auto; display: block;
+}

@@ -1,0 +1,124 @@
+/* =========== Layout START */
+html { font-size: $font-size; }
+body { 
+    color: $body-color;
+    font-family: $font-family;
+	line-height: 1.5; background: #E2E3DE image-url("bg-tile-01.jpg");
+}
+
+.container {
+	@extend .cf;
+    max-width: $max-width; min-width: 320px;
+    margin: auto;
+    padding: 0 0.5em;
+}
+
+
+
+// Default styling for navigation menus
+.nav		{ font-family: 'Bebas Neue Regular'; @include rem(font-size, 1.5rem);
+	ul		{ @extend .cf; margin: 0; }
+	li		{ list-style: none; float: left; text-transform: uppercase;
+		&.current_page_item	{
+			a	{ color: $color-brand; border-bottom: 1px solid; }
+		}
+	}
+	a		{ color: gray; 
+		&:hover		{ color: lighten( $color-brand, 10%); }
+		&:active	{ color: darken( $color-brand, 10%); }
+	}
+}
+
+
+
+.site-header	{
+	position: fixed; top: 0; left: 0; right: 0; z-index: 500; background: #BABEC9 image-url("top-nav-bg-01.jpg") 60% 50% repeat-x; @include box-shadow( 0 1px 24px rgba(0,0,0,0.33) ); border-bottom: 1px solid #747474; @include rem( max-height, 3.25rem);
+	
+	h1	{
+		position: absolute; top: 0; left: 50%; margin: 0 0 0 -76px; z-index: 10;
+
+		a	{ display: block; text-indent: -9999px; width: 150px; height: 80px; background: image-url("logo-03.png") 50% 50% no-repeat; border: none; }
+	}
+}
+
+.site-nav	{ 
+	li		{ text-shadow: 0 1px 1px rgba(255,255,255,0.75); margin: 0; width: 14.5%;
+	
+		&.current-menu-item,
+		&.current-page-ancestor { text-shadow: none;
+			a	{ background-color: rgba($color-brand, 0.3); border-top-color: $color-brand; @include box-shadow( 0 2px 5px rgba(0, 0, 0, 0.44) inset ); border-bottom: 0; }
+		}
+	}
+	a		{ color: $black; padding: 0.125em 0 0.375em; background-image: image-url("top-nav-divider.png"); background-position: 100% 50%; background-repeat: no-repeat; display: block; @include rem(line-height, 2rem); border-style: solid; border-width: 0.25em 0 0; border-color: transparent; @include single-transition( all, 0.3s, ease-out ); position: relative; text-align: center;
+
+		&:hover			{ background-color: rgba( $white ,0.3); border-top-color: lighten( $color-brand, 10% ); }
+		&:active		{ background-color: rgba($color-brand, 0.3); border-top-color: $color-brand; @include box-shadow( 0 2px 5px rgba(0, 0, 0, 0.44) inset ); border-bottom: 0; }
+	}
+	
+	#menu-item-2937,
+	#menu-item-2938,
+	#menu-item-2939	{ @extend .right; }
+	
+	li:first-child a:before,
+	#menu-item-2938 a:before	{ content: " "; position:absolute; top: 0; bottom: 0; right: 100%; background: image-url("top-nav-divider.png") 50% 50% no-repeat; width: 1px; }
+}
+
+.site-content	{ margin: 5em auto 8em; overflow: hidden;
+	a	{ @extend a.underlined;  }
+}
+
+.site-footer	{ @include rem(line-height, 3rem);
+	position: fixed; bottom: 0; left: 0; right: 0; z-index: 490; color: $body-color; background: #E2E3DE image-url("bg-tile-01.jpg"); @include box-shadow( 0 0 1.5em 1.5em #EAEAE8 );
+	
+	.container	{ border-style: solid; border-color: $body-color; border-width: 1px 0; position: relative; margin-bottom: 3em; }
+	
+	&.inversed	{ color: $white; background: #000; background: rgba(0, 0, 0, 0.4); @include box-shadow( 0 0 1.5em 1.5em rgba(0, 0, 0, 0.4) );
+
+		.container	{ border-color: $white; }
+		.interaction_bar {
+			a { border-color: $white; }
+			
+			#social-stream-callout	{ background: image-url("social/share_this.png") 50% 50% no-repeat; }
+			#facebook				{ background: image-url("social/facebook.png") 50% 50% no-repeat; }
+			#twitter				{ background: image-url("social/twitter.png") 50% 50% no-repeat; }
+			#pinterest				{ background: image-url("social/pinterest.png") 50% 50% no-repeat; }
+			#youtube				{ background: image-url("social/youtube.png") 50% 50% no-repeat; }
+			#instagram				{ background: image-url("social/instagram.png") 50% 50% no-repeat; }
+			#newsletter-signup		{ background: image-url("social/email.png") 0 50% no-repeat; }
+		}
+		.copyright-menu	{
+			li	{ border-color: $white; }
+		}
+		a	{ color: $white; }
+	}
+}
+
+.footer-nav		{
+	li	{ margin-left: 1em; }
+}
+
+
+
+
+
+
+// ========================= Responsive */
+
+/* Tablets */
+@media only screen and (max-width: 960px) {
+    html { font-size: 14px; }
+}
+
+/* Phones */
+@media only screen and (max-width: 520px) {
+    header, div.container section {
+		//@include grid-reset;
+	}
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio : 2), only screen and (min-device-pixel-ratio : 2) {
+    
+}
+
+/* =========== Layout END */

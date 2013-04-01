@@ -1,0 +1,630 @@
+$color-rss			: #FF9800;
+$color-flickr		: #f90784;
+$color-delicious	: #3271CB;
+$color-twitter		: #4ec2dc;
+$color-facebook		: #3b5998;
+$color-google		: #2d2d2d;
+$color-youtube		: #DF1F1C;
+$color-pinterest	: #CB2528;
+$color-lastfm		: #C90E12;
+$color-dribbble		: #F175A8;
+$color-vimeo		: #4EBAFF;
+$color-stumbleupon	: #EB4924;
+$color-deviantart	: #EB4924;
+$color-tumblr		: #365472;
+$color-instagram	: #413A33;
+
+
+
+/* Reset */
+.dcsns ul, .dcsns li {
+	padding: 0; 
+	margin: 0; 
+	list-style: none!important;
+	background: none;
+}
+
+/* Main styles */
+/* Feeds */
+.dcsns {
+    color: #444;
+    list-style: none outside none;
+    margin: 0 0 0 32px;
+}
+.dcsns h1 {
+    width: auto;
+	position: relative;
+}
+.dcsns h1, .dcsns h2, .dcsns h3 {
+    line-height: 1.35em;
+}
+.dcsns-content {
+	position: relative;
+	padding: 0;
+}
+.dcsns-loading {
+	background: image-url("loading-light.gif") no-repeat 0 0;
+	height: 24px;
+	padding: 6px 0 0 30px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.stream {
+	p		{ margin: 0; padding: 0; }
+	li		{
+		background-color: #f7f6f6;
+		@include box-shadow( 0 1px 2px rgba(0,0,0,0.5) );
+	    font-size: 0.75em;
+	    padding: 3.5em 0 2.5em 0;
+	    width: 24%;
+		position: relative;
+		margin: 0.5%;
+		font-family: Arial, sans-serif;
+		line-height: 1.35em; border-top: 1em solid;
+
+		a		{
+			color: #2DB6E8;
+		}
+		.inner {
+			overflow: hidden;
+			padding: 0 1em;
+		}
+		.icon {
+			position: absolute;
+			left: 0.25em;
+			top: 0.25em;
+			z-index: 3;
+			width: 3em;
+			height: auto;
+		}
+		.section-intro {
+			width: 100%;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+			font-style: normal; padding: 0 1em;
+			font-weight: bold;
+			font-size: 0.8em; line-height: 3em;
+			z-index: 2; background: image-url("partners_modal_bg.jpg") center top; background-size: 100% 100%;
+
+			a {
+				text-decoration: underline;
+			}
+		}
+		.clear {
+			clear: both;
+		}
+
+		.section-title {
+			display: block;
+			font-weight: bold;
+			margin-bottom: 3px;
+
+			a {
+				color: #555;
+				&:hover		{ color: #2DB6E8; }
+			}
+		}
+
+		.section-thumb {
+			float: left;
+			margin: 0 7px 0 0;
+
+			img {
+				border: 1px solid #ccc;
+				padding: 1px;
+				background: #fff;
+			}
+		}
+		.section-text {
+			display: block;
+			margin-bottom: 3px;
+
+			br	{ display: block; }
+		}
+		.section-user {
+			display: block;
+			font-weight: bold;
+			position: absolute; top: 0; left: 4em;
+			line-height: 3em;
+		}
+
+		.meta {
+			display: block;
+			font-size: 90%;
+			color: #999;
+
+			span {
+				margin: 0 8px 5px 0;
+				display: block;
+				float: left;
+				padding: 0 0 0 15px;
+				line-height: 12px;
+			}
+			&.item-comments {
+				padding: 0 0 0 35px;
+				margin: 0 0 5px 0;
+				min-height: 30px;
+				position: relative;
+				clear: both;
+				line-height: 1.3em;
+
+				img {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 30px;
+				}
+			}
+			&.item-likes {
+				padding: 0;
+				width: 100%;
+				overflow: hidden;
+				clear: both;
+				line-height: 1.3em;
+
+				img {
+					float: left;
+					margin: 0 5px 5px 0;
+					width: 30px;
+					border: 1px solid #ddd;
+					padding: 1px;
+					background: #fff;
+				}
+			}
+		}
+		.section-meta {
+			display: block;
+			margin: 0;
+			padding: 0;
+			clear: both;
+		}
+
+		.section-share {
+			display: block; position: absolute; bottom: 0.5em; right: 0.5em; z-index: 10;
+
+			a {
+				display: block;
+				width: 16px;
+				height: 16px;
+				float: left;
+				margin: 0 0 0 2px;
+				background: image-url("social/share.png") no-repeat 0 0;
+
+				&.share-facebook	{ background-position: 0 0;
+					&:hover { background-position: -16px 0; }
+				}
+				&.share-twitter { background-position: 0 -16px; 
+					&:hover { background-position: -16px -16px; }
+				}
+				&.share-reply { background-position: 0 -32px; 
+					&:hover { background-position: -16px -32px; }
+				}
+				&.share-retweet { background-position: 0 -48px;
+					&:hover { background-position: -16px -48px; }
+				}
+				&.share-favorite { background-position: 0 -64px;
+					&:hover { background-position: -16px -64px; }
+				}
+				&.share-google { background-position: 0 -80px;
+					&:hover { background-position: -16px -80px; }
+				}
+				&.share-linkedin { background-position: 0 -96px;
+					&:hover		{ background-position: -16px -96px; }
+				}
+			}
+		}
+
+		&.dcsns-error {
+			color: #990000;
+		}
+	}
+}
+
+
+.meta	{
+	span	{
+		&.shares {
+			background: image-url("social/shares.png") no-repeat 0 0;
+			padding-left: 20px;
+		}
+		&.views {
+			background: image-url("social/views.png") no-repeat 0 0;
+			padding-left: 18px;
+		}
+		&.likes {
+			background: image-url("social/likes.png") no-repeat 0 0;
+			padding-left: 16px;
+		}
+		&.comments {
+			background: image-url("social/comments.png") no-repeat 0 0;
+		}
+		&.users {
+			background: image-url("social/users.png") no-repeat 0 0;
+		}
+		&.videos {
+			background: image-url("social/videos.png") no-repeat 0 0;
+			padding-left: 16px;
+		}
+	}
+}
+
+
+
+/* Toolbar */
+.dcsns-toolbar {
+	padding: 0; position: fixed; top: 0; left: 0; margin: 1em 0;
+
+	.filter		{
+		padding: 0; margin: 0; list-style: none;
+
+		.link-all	{
+			color: #fff; text-shadow: 0 0 1px #555; font-weight: bold;
+		}
+
+		li		{
+			float: left; clear: left; background: none; padding: 0; margin: 0;
+
+			a		{
+				width: 28px; margin: 0 1px 1px 0; text-align: center; display: block; background: #777; line-height: 28px; @include border-radius(0 0.25em 0.25em 0); 
+			}
+			img		{ margin: auto; height: 28px; }
+		}
+		a:hover		{ background-color: darken($body-color, 10%); }
+	}
+
+	.dcsns-loading		{ right: 10px; left: auto; }
+}
+
+/* Filter */
+#wall {
+	padding-top: 15px;
+
+	.dcsns-toolbar {
+		margin-bottom: 25px;
+	}
+}
+
+
+/* Controls */
+.dcsns .controls {
+	position: absolute;
+	right: 0;
+	top: 7px;
+	height: 22px;
+	padding: 0;
+	z-index: 12;
+}
+.dcsns .controls li {
+	display: inline;
+	background: none;
+}
+.dcsns .controls a {
+	display: block;
+	width: 22px;
+	height: 22px;
+	float: left;
+	margin: 0 0 0 2px;
+	background: image-url("social/controls.png") no-repeat 0 0;
+}
+.dcsns .controls .prev {
+	background-position: -44px 0;
+}
+.dcsns .controls .next {
+	background-position: -66px 0;
+}
+.dcsns .controls .play {
+	background-position: 0 0;
+}
+.dcsns .controls .pause {
+	background-position: -22px 0;
+}
+.dcsns .controls .prev:hover {
+	background-position: -44px -22px;
+}
+.dcsns .controls .next:hover {
+	background-position: -66px -22px;
+}
+.dcsns .controls .play:hover {
+	background-position: 0 -22px;
+}
+.dcsns .controls .pause:hover {
+	background-position: -22px -22px;
+}
+
+/* feeds network specific styles */
+.stream li.dcsns-rss { border-color: $color-rss; }
+.stream li.dcsns-flickr { border-color: $color-flickr; }
+.stream li.dcsns-delicious { border-color: $color-delicious; }
+.stream li.dcsns-twitter { border-color: $color-twitter; }
+.stream li.dcsns-facebook { border-color: $color-facebook; } 
+.stream li.dcsns-google { border-color: $color-google; }
+.stream li.dcsns-youtube { border-color: $color-youtube; }
+.stream li.dcsns-pinterest { border-color: $color-pinterest; }
+.stream li.dcsns-lastfm { border-color: $color-lastfm; }
+.stream li.dcsns-dribbble { border-color: $color-dribbble; }
+.stream li.dcsns-vimeo { border-color: $color-vimeo; }
+.stream li.dcsns-stumbleupon { border-color: $color-stumbleupon; }
+.stream li.dcsns-deviantart { border-color: $color-deviantart; }
+.stream li.dcsns-tumblr { border-color: $color-tumblr; }
+.stream li.dcsns-instagram { border-color: $color-instagram; }
+
+.filter .f-rss a:hover { background-color: $color-rss; }
+.filter .f-flickr a:hover { background-color: $color-flickr; }
+.filter .f-delicious a:hover { background-color: $color-delicious; }
+.filter .f-twitter a:hover { background-color: $color-twitter; }
+.filter .f-facebook a:hover { background-color: $color-facebook; }
+.filter .f-google a:hover { background-color: $color-google; }
+.filter .f-youtube a:hover { background-color: $color-youtube; }
+.filter .f-pinterest a:hover { background-color: $color-pinterest; }
+.filter .f-lastfm a:hover { background-color: $color-lastfm; }
+.filter .f-dribbble a:hover { background-color: $color-dribbble; }
+.filter .f-vimeo a:hover { background-color: $color-vimeo; }
+.filter .f-stumbleupon a:hover { background-color: $color-stumbleupon; }
+.filter .f-deviantart a:hover { background-color: $color-deviantart; }
+.filter .f-tumblr a:hover { background-color: $color-tumblr; }
+.filter .f-instagram a:hover { background-color: $color-instagram; }
+
+
+// Facebook 
+.stream li.dcsns-facebook {
+	.section-thumb img {
+		width: 75px;
+	}
+	.section-text {
+		img {
+			margin: 5px 7px 5px 0;
+			float: left;
+			border: 1px solid #ddd;
+			padding: 1px;
+			background: #fff;
+		}
+		a {
+			margin-right: 4px;
+		}
+	}
+	.meta {
+		display: block;
+		clear: both;
+
+		&.item-comments {
+			padding: 0;
+			min-height: auto;
+
+			a {
+				display: block;
+				margin: 0 0 2px 0;
+			}
+		}
+		.share-facebook {
+			display: none;
+		}
+	}
+}
+
+// Twitter 
+.stream li.dcsns-twitter {
+	.section-thumb {
+		position: absolute; top: 0.25em; right: 0.25em; z-index: 5; margin: 0;
+
+		img		{ width: 3em; }
+	}
+	.section-user {
+		padding: 0;
+		background: none;
+	}
+	.section-text img {
+		margin: 5px 0 0;
+		border: 1px solid #ddd;
+		padding: 1px;
+		background: #fff;
+		max-width: 192px;
+	}
+	a {
+		color: #38AEAE;
+		&:hover	{
+			color: #38AEAE;
+			text-decoration: underline;
+		}
+	}
+	.section-intro {
+		span {
+			a {
+				text-decoration: none;
+				margin-left: 0;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.twitter-user {
+		position: absolute; top: 0; left: 4em; right: 4em; height: 3em; padding: 0.5em 0 0;
+
+		a {
+			color: #999;
+			line-height: 1;
+			&:hover {
+				color: #999;
+				text-decoration: none;
+
+				strong {
+					color: #38AEAE;
+					text-decoration: underline;
+				}
+			}
+			strong{
+				color: #444; display: block;
+			}
+		}
+	}
+}
+
+// Google
+.stream li.dcsns-google .section-title {
+	margin-bottom: 5px;
+}
+.dcsns .stream li.dcsns-google .section-thumb img {
+	max-width: 192px;
+}
+.stream li.dcsns-google .meta span.plusones {
+	padding-left: 0;
+}
+
+// RSS
+.stream li.dcsns-rss .section-text img {
+	border: 1px solid #ddd;
+	padding: 1px;
+	background: #fff;
+	max-width: 192px;
+}
+
+// stumbleupon
+.dcsns .stream li.dcsns-stumbleupon .section-title {
+	display: block;
+	clear: both;
+}
+.dcsns .stream li.dcsns-stumbleupon .section-thumb img {
+	max-width: 192px;
+}
+
+// youtube */
+.stream li.dcsns-youtube .section-thumb img {
+	max-width: 192px;
+}
+
+/* vimeo */
+.stream li.dcsns-vimeo .section-thumb img {
+	max-width: 192px;
+}
+.dcsns .stream li.dcsns-vimeo .section-title {
+	display: block;
+	clear: both;
+}
+.stream li.dcsns-vimeo .section-text {
+	margin-bottom: 5px;
+}
+.stream li.dcsns-vimeo .section-text .meta {
+	padding-top: 5px;
+}
+.stream li.dcsns-vimeo .logo {
+	margin-bottom: 3px;
+}
+/* Flickr */
+.stream li.dcsns-flickr .section-thumb {
+	margin: 0;
+}
+.stream li.dcsns-flickr .section-thumb img{
+	max-width: 192px;
+}
+
+// Pinterest */
+.stream li.dcsns-pinterest {
+	.section-thumb {
+		display: block; margin: 0 0 0.5em;
+		img {
+			max-width: 100%;
+		}
+	}
+	.section-text {
+		clear: both;
+	}
+}
+
+/* dribbble */
+.stream li.dcsns-dribbble .inner img {
+	margin-bottom: 5px;
+	max-width: 192px;
+}
+
+// lastfm */
+.stream li.dcsns-lastfm .section-title {
+	background: image-url("social/tracks.png") no-repeat 0 0;
+	padding-left: 17px;
+	margin-bottom: 0;
+}
+// deviantart */
+.stream li.dcsns-deviantart .section-thumb {
+	display: block;
+	float: none;
+}
+.stream li.dcsns-deviantart .section-thumb img {
+	max-width: 192px;
+}
+
+// tumblr */
+.stream li.dcsns-tumblr .section-text img {
+	margin: 0 7px 5px 0;
+	float: left;
+	border: 1px solid #ddd;
+	padding: 1px;
+	background: #fff;
+	max-width: 192px;
+}
+.stream li.dcsns-tumblr .track {
+	display: block;
+	background: image-url("social/tracks.png") no-repeat 0 5px;
+	padding: 5px 0 0 17px;
+	margin-bottom: 0;
+}
+
+// Instagram
+.stream li.dcsns-instagram {
+	padding-bottom: 40px;
+
+	.section-title {
+		font-weight: normal;
+		clear: both;
+	}
+	.section-thumb	{ margin: 0;
+		img {
+			margin: 0 0 0.5em;
+			float: left;
+			border: 1px solid #ddd;
+			padding: 1px;
+			background: #fff;
+			max-width: 100%;
+		}
+	}
+	.meta {
+		clear: both;
+	}
+	.section-meta .meta .comments,
+	.section-meta .meta .likes {
+		margin: 0 0 5px 0;
+		padding-top: 5px;
+		background-position: 0px 5px;
+		float: none;
+		font-size: 100%;
+		font-weight: bold;
+	}
+}
+
+
+// Isotope
+.isotope,
+.isotope .isotope-item {
+	@include transition-duration(0.75s);
+}
+.isotope {
+	@include transition-property(height, width);
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+// disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+	@include transition-duration(0s);
+}
+

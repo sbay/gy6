@@ -1,0 +1,607 @@
+﻿//  Taiga Boilerplate 1.0
+//  Copyright 2012 by Studio Wolf
+//  Licensed under the MIT license
+
+
+/*!
+Theme Name: Got Your Six
+Description: A new theme for Got Your 6
+Version: 2.0
+Author: Stas Baydakov
+Author URI: http://thesblab.com
+*/
+
+
+@font-face {
+	font-family: 'Bebas Neue Regular';
+	src: font-url('BebasNeue-webfont.eot');
+	src: font-url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+		font-url('BebasNeue-webfont.woff') format('woff'),
+		font-url('BebasNeue-webfont.ttf') format('truetype'),
+		font-url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+// ========================= Variables ===========================
+
+$font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-size: 16px;
+
+$max-width: 1020px;
+$margin-bottom: 1.25em;
+$default-gutter: 2; // Specify just the unit number
+
+$color-brand: #3c4868;
+$color-error: #d24226;
+$color-success: #5DA423;
+$black: #050505;
+$white: #fff;
+$body-color: #727272;
+$orange: #dd9d3b;
+
+$media-press: #97a63a;
+$media-video: #12416f;
+$media-photo: #f37321;
+
+
+// ========================= Includes =============================
+
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/css3/user-interface";
+
+// Base
+@import "lib/_reset";
+@import "lib/_rem";
+@import "lib/_functions";
+@import "lib/_mixins";
+@import "lib/_grid";
+@import "lib/_typography";
+@import "lib/_layout";
+
+// Modules
+@import "lib/_forms";
+//@import "lib/_tables";
+@import "lib/_labels";
+@import "lib/_buttons";
+//@import "lib/_icons";
+//@import "lib/_messages";
+//@import "lib/_pagination";
+@import "lib/_modal";
+//@import "lib/_tabs";
+//@import "lib/_panels";
+@import "lib/_print";
+
+
+
+
+// Plugins
+@import "jquery.bxslider";
+@import "jquery.fancybox";
+@import "supersized";
+@import "jquery.contactform7";
+@import "dcsns_wall";
+
+
+
+// ======================== Site Specific Declarations
+
+
+// Helper classes
+.fluid			{ @include fluid; }
+.show			{ display: block; }
+.padding		{ padding: 0.5em; }
+
+.saturate {-webkit-filter: saturate(3);}
+.grayscale {-webkit-filter: grayscale(100%);}
+.contrast {-webkit-filter: contrast(160%);}
+.brightness {-webkit-filter: brightness(0.25);}
+.blur {-webkit-filter: blur(3px);}
+.invert {-webkit-filter: invert(100%);}
+.sepia {-webkit-filter: sepia(100%);}
+.huerotate {-webkit-filter: hue-rotate(180deg);}
+.opacity {-webkit-filter: opacity(50%);}
+
+
+#scroll		{ display: none; }
+#secondary_nav	{ display: none; }
+.fancybox-close		{ @include single-transition( all, 0.3s, linear ); opacity: 0.75;
+	&:hover			{ @include transform( rotate(360deg) ); opacity: 1; }
+}
+.nav-single	{ display: none; }
+
+.no-scrollbars .fancybox-inner		{ overflow: hidden !important; }
+.fancybox-inner	a,
+.post-content a { @extend a.underlined; }
+
+.alignleft		{ @extend .left; }
+.alignright		{ @extend .right; }
+.aligncenter	{ @extend .center; }
+
+.error			{ color: $color-error; }
+.success		{ color: $color-success; }
+.result			{ padding: 0.5em; margin-top: 0.5em; }
+
+
+img	{
+	&.alignleft,
+	&.alignright	{ margin: 1em; }
+}
+
+.loading		{ position: relative; pointer-events: none; @include user-select(none);
+	&:after		{
+		content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #e2e3de; background-color: rgba(#e2e3de, 0.75); background-image: image-url("loading-light.gif"); background-position: 50% 50%; background-repeat: no-repeat; @include box-shadow( 0 0 1em 1em rgba(#e2e3de, 0.75) );
+	}
+}
+
+
+
+body	{ overflow-y: scroll !important; margin: 0 !important;
+	&.home	{
+		background: $black; color: $white;
+		
+		.site-footer	{
+			#scroll		{ content: " "; position: absolute; bottom: -2em; left: 50%; width: 250px; height: 17px; margin-left: -125px; background: image-url("scroll_for_experience.png") no-repeat 50% 50%; display: none; text-indent: -9999px; }
+		}
+	}
+}
+
+
+
+// Home page slides
+#slide-title	{ @include text-shadow( 0 1px 1px rgba(0,0,0,0.75) ); position: fixed; margin: auto; @include rem(font-size, 1.25rem);
+	&.slide1	{ max-width: 1020px; min-width: 320px; text-align: center; left: 0; right: 0; bottom: 25%; }
+	&.slide2	{ top: 30%; right: 15%; width: 25em; }
+	&.slide3	{ max-width: 1020px; min-width: 320px; text-align: center; left: 0; right: 0; bottom: 25%; }
+	&.slide4	{ max-width: 1020px; min-width: 320px; text-align: center; left: 0; right: 0; bottom: 25%; }
+	&.slide5	{ top: 40%; right: 15%; width: 25em; }
+}
+.supersized_list	{
+	display: none;
+}
+.slide-counter	{
+	@extend .event-counter;
+}
+.slides-nav	{
+	@extend .events-nav;
+}
+
+
+
+// Shop Buttons afixed on left hadn side of the site
+#shop-buttons	{ position: fixed; left: 1em; top: 50%; margin-top: -90px; z-index: 508; @include transform( translate3d(0,0,0) );
+	& > *	{ background: image-url("shop-buttons.png") no-repeat; width: 83px; height: 83px; display: block; text-indent: -9999px; opacity: 0.75;
+		&:hover		{ opacity: 1; }
+	}
+	.donate	{ background-position: 0 0; }
+	.shop	{ background-position: 0 100%; }
+}
+
+#live-button	{ position: fixed; left: 0; top: 15%; z-index: 509;
+	.live		{ width: 95px; height: 40px; background: image-url("live_bg.png"); font-family: 'Bebas Neue Regular'; display: block; color: $white; text-align: center; line-height: 37px; @include rem(font-size, 1.5rem);
+		&:hover		{ color: darken($white, 30%); }
+	}
+	.now		{
+		&:after		{ content: " "; width: 52px; height: 61px; background: image-url("live_now.png"); position: absolute; top: -2em; right: -0.5em; }
+	}
+}
+
+.callout		{ 
+	position: fixed; left: 0; z-index: 510; 
+
+	&#callout-wells		{ top: 15%; background: #7d7d7d; @include rem(padding, 0.8rem); @include box-shadow(0 0 1em rgba(50,50,50,0.3)); @include border-radius(0 0.5em 0.5em 0); 
+		img		{ @include rem(max-width, 3.45rem); height: auto; display: block; }
+	}
+	&#psa-callout	{ bottom: 20%;
+		a	{ display: block; background: image-url("psa-callout.jpg") 50% 50% no-repeat; text-indent: -9999px; width: 92px; height: 75px; @include box-shadow(0 0 1em rgba(50,50,50,0.3)); @include border-radius(0 0.5em 0.5em 0); }
+	}
+}
+
+
+
+// Newsletter Signup Modal
+#newsletter-modal	{
+	padding: 2em; z-index: 60; display: none;
+
+	button			{ width: 100%; margin-top: 0.25em; }
+}
+
+
+
+
+// Social interaction bar in Site Footer
+.interaction_bar	{ list-style: none; margin: 0; position: relative; top: 2px; font-family: 'Bebas Neue Regular'; @include rem(font-size, 1.5rem);
+	li			{ float: left; @include rem( margin, 0 0.25rem 0 0 ); text-transform: uppercase; }
+	a			{ 
+		color: $body-color; @include rem(width, 32px); @include rem(height, 32px); border: 2px solid $body-color; display: inline-block; @include displayfix; text-indent: -9999px; @include border-radius( 2px ); @include rem( line-height, 2rem); @include rem(padding, 0 0.5rem); opacity: 0.75; 
+
+		&:hover			{ opacity: 1; }
+	}
+	
+	#social-stream-callout	{ background: image-url("social/share_this_dark.png") 50% 50% no-repeat; }
+	#facebook				{ background: image-url("social/facebook_dark.png") 50% 50% no-repeat; }
+	#twitter				{ background: image-url("social/twitter_dark.png") 50% 50% no-repeat; }
+	#pinterest				{ background: image-url("social/pinterest_dark.png") 50% 50% no-repeat; }
+	#youtube				{ background: image-url("social/youtube_dark.png") 50% 50% no-repeat; }
+	#instagram				{ background: image-url("social/instagram_dark.png") 50% 50% no-repeat; }
+	#newsletter-signup		{ background: image-url("social/email_dark.png") 0 50% no-repeat; @include rem(padding-left, 2rem); }
+	
+	#callout,
+	#newsletter-signup	{ text-indent: 0; width: auto; }
+}
+
+
+
+
+// Utility menu in the very footer of the site
+.copyright-menu		{ position: absolute; bottom: -2em; right: 0; line-height: 1; @include rem(font-size, 0.75rem); @include opacity(0.8);
+
+	> span	{ margin-right: 1em; }
+	ul		{ margin: 0; list-style: none; }
+	li		{ float: left; border-left: 1px solid $body-color;
+		&:first-child		{ border-left: none; }
+	}
+
+	a		{ color: $body-color; padding: 0 0.5em;
+		&:hover		{ text-decoration: underline; }
+	}
+}
+
+
+// Some classes used on About
+.lead, p.lead			{ color: darken( $body-color, 10% ); border-style: solid; border-color: darken( $body-color, 10% ); border-width: 1px 0; text-align:  center; padding: 0.5em 0; font-family: 'Bebas Neue Regular', sans-serif; @include rem(font-size, 1.75rem); @include rem(margin-bottom, 1.5rem); }
+.title-panel	{ display: block; position: relative; margin-bottom: ($default-gutter /4) + em; border: 1px solid #fff !important; @include transform( translate3d(0,0,0) );
+	img			{ max-height: 8em; }
+	
+	h2			{ position: absolute; z-index: 15; @include rem( bottom, 0.25rem ); @include rem( right, 1rem ); color: white; width: 100%; margin: 0; padding: 0; text-shadow: 0 2px 5px rgba(0,0,0,0.75); text-transform: uppercase; line-height: 1; @include rem(font-size, 2.5rem); text-align: right; }
+}
+
+
+
+
+// 6 Pillars
+.section	{ background-color: #f7f6f6; border: 1px solid $white; @include box-shadow( 0 0 10px rgba( $color-brand, 0.15) ); position: relative; }
+.section-heading	{ position: relative; max-height: 300px; @include rem( margin-bottom, 0.5rem ); overflow: hidden; }
+
+.section-subnav		{ @include rem(font-size, 1.125rem); @include rem( padding, 0.25rem 0 ); margin: 0.25em 1em 0; text-align: center; border-style: solid; border-width: 1px 0; border-color: lighten( $body-color, 20% );
+	li	{  padding: 0 1em; float: none; display: inline-block; @include displayfix; border-left: 1px solid lighten( $body-color, 40% );
+		&:first-child	{ border-left: none; }
+	}
+	a	{  }
+}
+.section-content	{ padding: 1em; display: none;
+	&.active		{ display: block; }
+}
+
+.partner_tabs		{ position: absolute; bottom: 0; left: 2em;
+	.tab_titles		{ list-style: none; margin: 0; padding: 0;
+		li			{ display: inline-block; @include displayfix; 
+			a		{ 
+				@include rem(margin-right, 1rem); background-color: $color-brand; @include background-image( linear-gradient(top, lighten($color-brand, 10%), darken($color-brand, 10%)) ); color: $white; font-family: 'Bebas Neue Regular'; @include rem(font-size, 1.25rem); padding: 0.25em 1em; @include border-radius( 0.5em 0.5em 0 0 ); box-shadow: 0 0 1em black; display: block;
+
+				&.active	{
+					@include background-image( linear-gradient(top, lighten($color-brand, 30%), darken($color-brand, 10%)) );
+				}
+			}
+		}
+	}
+	.tab_lists		{
+		ul			{ list-style: none; margin: 0; padding: 0;
+			list-style: none; background-color: #f7f6f6; display: block; margin: 0; padding: 0.5em 1em; min-width: 10em; text-align: center; @include border-radius( 0 0.5em 0 0 ); box-shadow: 0 0 1em black; position: relative; z-index: 5; display: none; 
+
+			li			{ display: inline-block; @include displayfix; margin-left: -4px; vertical-align: middle; }
+			img			{ max-width: 180px; height: auto; padding: 0.25em 1em; max-height: 75px; margin: auto; }
+		}
+	}
+}
+
+
+.actions	{ list-style: none; margin: 0; padding: 0; position: absolute; top: 100%; right: 2em; margin-top: 1px;
+	li		{ float: left; margin-left: 1em; }
+	a		{
+		display: block; border: none !important; background: $body-color; @include background-image( linear-gradient(top, darken($body-color, 10%), lighten($body-color, 10%)) ); color: $white; font-family: 'Bebas Neue Regular'; @include rem(font-size, 1.25rem); padding: 0.25em 1em; @include border-radius( 0 0 0.5em 0.5em );
+
+		&:hover		{
+			color: darken($white, 15%);
+		}
+	}
+
+	.take_action	{ background: $orange; @include background-image( linear-gradient(top, darken($orange, 10%), lighten($orange, 10%)) ); }
+	.progress		{ display: none; }
+}
+
+
+
+
+
+
+
+// Take Action
+.take-action		{ position: relative;
+	.panels			{ position: relative; left: 0%; @include single-transition( all, 1.5s, ease-in-out ); z-index: 15;
+		&.aside		{ left: -80%;
+			h2		{ width: 25%; }
+		}
+		
+		a			{ @include opacity(0.5);
+			&:hover			{ @include opacity(0.75); }
+			&.active		{ @include opacity(1); }
+		}
+	}
+	
+	.take-action-content	{ position: absolute; top: 0; right: -100%; width: 75%; padding: 2.5em 0; @include single-transition( all, 0.9s, ease-out, 0s ); @include opacity(0);
+		&.active			{ right: 0; z-index: 10; @include opacity(1); }
+	}
+
+	.aside ~ .take-action-content	{ @include transition-delay(0.6s); }
+}
+
+
+
+// Partners
+.partners	{
+	.row	{
+		.section	{ min-height: 300px; }
+	}
+	h2		{ line-height: 1; }
+	.button		{ position: absolute; top: 0.5em; right: 0.5em; }
+}
+.partners_list		{ list-style: none; margin: 0; padding: 0;
+	li			{ width: 20%; padding: 1%; display: inline-block; @include displayfix; vertical-align: middle; margin-left: -4px /* Inline-block fix */; }
+	img			{ max-width: 100%; height: auto;  padding: 1em; max-height: 150px; margin: auto; }
+	
+	&.sponsors		{ text-align: center;
+		li			{ width: 33.3%; }
+		img			{ max-height: 250px; }
+	}
+}
+.partner-content	{
+	max-width: 750px; padding: 0 10% 1em; background: #f7f6f6 image-url("partners_modal_bg.jpg") 50% 4em no-repeat; @include border-radius(1em);
+	
+	h2		{ margin: 0; @include rem( line-height, 4rem ); text-align: center; text-transform: uppercase; @include rem(font-size, 2rem); }
+	img		{ display: block; margin: 2em auto; max-width: 500px; height: auto; max-height: 150px; }
+}
+
+
+
+
+
+// FAQs
+.faq	{
+	dt		{ cursor: pointer; float: left; clear: both; }
+	dd		{ margin-bottom: 1.25em; display: block; float: left; clear: both; }
+}
+
+
+
+
+
+
+// Events
+.events		{
+	
+}
+.event		{ display: none;
+	&.active	{ display: block; }
+}
+.event-info	{ position: absolute; bottom: 2em; background: white; width: 20em; padding: 1em; left: 2em; height: 20em; overflow: auto;
+	h2		{ line-height: 1; margin: 0; }
+	small	{ margin-bottom: 1em; display: inline-block; @include displayfix; }
+}
+.events-nav	{ margin: 0; list-style: none; float: left;
+	li		{ display: inline-block; @include displayfix; margin: 0 0.5em; @include rem(width, 0.75rem); @include rem(height, 0.75rem); @include border-radius( 500px ); background: lighten($body-color, 20%); cursor: pointer;
+		&.active,
+		&.current-slide	{ background: $color-brand; }
+	}
+}
+.event-counter	{ float: right; font-family: 'Bebas Neue Regular', sans-serif; @include rem(font-size, 3rem); margin-left: 0.5em; line-height: 1;
+	.selected	{  }
+	.total		{ @include rem(font-size, 1.5rem);
+		&:before	{ content: " of "; }
+	}
+}
+
+
+
+// Media
+.media	{ list-style: none; margin: 0;
+	.media-item		{ float: left; width: 19%; margin: 0 0.5% 1%; border-style: solid; border-width: 0 0 0.5em 0; overflow: hidden;
+		a			{ display: block; border: 0; text-decoration: none; padding: 0.25em; height: 12em; }
+		img			{ margin: 0 0 0.5em; }
+		.heading	{ color: $black; @include rem(font-size, 0.85rem); font-weight: bold; text-transform: uppercase; line-height: 1; height: 2em; overflow: hidden; position: relative; font-family: inherit;
+
+			&:after	{ content: ""; @include background-image( linear-gradient(left, rgba(255, 255, 255, 0), #f7f6f6) );
+height: 1em; width: 25%; position: absolute; bottom: 0; right: 0; }
+		}
+		time		{ @include rem(font-size, 0.7rem); line-height: 1; }
+		
+		&.press		{ border-color: $media-press; }
+		&.video		{ border-color: $media-video; }
+		&.photo		{ border-color: $media-photo; }
+
+		&:hover,
+		&:focus		{ @include box-shadow( 0 0.25em 0.5em rgba(0,0,0,0.25) ); }
+	}
+}
+.media-nav	{
+	li	{ margin-left: 1em; }
+	a	{ @include rem( padding-left, 1.5em ); }
+	
+	[data-type="video"] { background: image-url("media_video.png") 0 50% no-repeat; }
+	[data-type="photo"] { background: image-url("media_photo.png") 0 50% no-repeat; }
+	[data-type="press"] { background: image-url("media_press.png") 0 50% no-repeat; }
+	[data-type="all"]	{ padding-left: 0; }
+}
+
+#featured_media		{
+	margin: 0 2em 2em;
+}
+
+
+
+// Posts template (loaded in an iframe)
+.fancybox-wrap	{ 
+	&.news		{ border-top: 1em solid; margin-bottom: 1em; }
+	&.press		{ border-top: 1em solid $media-press; }
+	&.video		{ border-top: 1em solid $media-video; }
+	&.photo		{ border-top: 1em solid $media-photo; }
+}
+body	{
+	&.single-post	{
+		background: $white; color: $black;
+	}
+}
+.post-content			{ background: #f7f6f6;
+	.entry-title		{ line-height: 1; }
+	.entry-date			{ @include rem(font-size, 0.85rem); color: darken($white, 35%); }
+	.entry-header		{ margin: 0 0 1em; }
+	.entry-content		{ margin: 0 0 1em; text-align: justify; }
+	
+	.fb_iframe_widget	{
+		&.fb-comments	{ width: 100%; margin: 0 0 3em;
+			span		{ display: block; width: auto !important; }
+			iframe		{ width: 100% !important; }
+		}
+	}
+
+	.post				{ padding: 2em 10%; }
+	.post-info			{ padding: 1em 10% 2em; background: image-url('partners_modal_bg.jpg') top center no-repeat; }
+}
+.post-social	{ margin: 0 0 1em; line-height: 1;
+	> *		{ float: right; margin-left: 1em; }
+}
+.comments-area	{
+	.comments-title	{ line-height: 1; }
+	.commentlist	{ list-style: none; margin: 1em 0;
+		.comment	{
+			.comment-author		{ float: left; padding: 0 1em 0 0; }
+			.comment-content	{ overflow: hidden; }
+			.comment-meta		{
+				cite			{ font-weight: bold; }
+				time			{ @include rem(font-size, 0.65rem); display: block; border-bottom: 1px solid; color: darken($white, 35%); margin-bottom: 0.5em; }
+			}
+			.reply				{ float: right; font-weight: bold; @include rem(font-size, 0.75rem); }
+		}
+	}
+	#commentform	{
+		textarea					{ @include rem(height, 6rem); }
+		.form-allowed-tags			{ display: none; }
+	}
+}
+
+.video-wrapper		{
+
+}
+.video-container {
+	position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;
+
+	iframe,  
+	object,  
+	embed {
+		position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+	}
+}
+.press-thumbnail	{
+	max-height: 400px; width: 100%; max-width: 40%; height: 100%;
+}
+
+
+
+
+.news-block	{ margin-top: 2em;
+	h2	{ border-bottom: 1px solid; }
+}
+.news-list		{ @extend .media;
+	
+}
+
+
+
+// Shop
+#shop-iframe					{ width: 100%; height: 1050px; }
+#customer_service-iframe		{ width: 100%; height: 500px; }
+
+
+// Donate
+#donate_form	{
+	margin: 2em 0 0;
+
+	input[type=radio]	{
+		margin-right: 0.25em;
+
+		& ~ .error {
+			position: absolute; top: 100%;
+		}
+	}
+
+	#amount-other	{
+		width: 6em; float: right; position: absolute; top: 0; right: 0; display: none;
+	}
+
+	#amount-6:checked ~ #amount-other {
+		display: block;
+	}
+}
+#donate_form_thanks	{
+	@include single-transition( padding, 1s, ease-in-out );
+
+	.share		{
+		.icon		{
+			width: 47px; height: 47px; display: inline-block; @include displayfix; text-indent: -9999px; margin: 0.5em; border: 0;
+		}
+		.facebook	{
+			background: image-url("share_facebook.png") 50% 50% no-repeat; 
+		}
+		.twitter	{
+			background: image-url("share_twitter.png") 50% 50% no-repeat;
+		}
+	}
+}
+
+
+
+// Progress Report
+// We are using the main page's page ID to styled up Progress Report
+body.parent-pageid-3203		{
+	.site-nav		{
+		visibility: hidden;
+	}
+
+	.site-footer	{
+		background: #040623; margin-bottom: 3em; color: $white; @include box-shadow(none);
+
+		&:before	{
+			content: "."; color: $color-brand; position: absolute; top: 100%; left: 0; right: 0; width: 100%; background: rgba(0, 0, 0, 0.8); height: 100%;
+		}
+
+		.container	{
+			margin-bottom: 0; border: 0;
+		}
+
+		a	{
+			color: $white;
+		}
+
+		.report-title	{
+			@include rem(line-height, 3rem); @include rem(font-size, 1.5rem); 
+
+			span	{ background: $color-brand; padding: 0 1em; margin-right: 1em; display: inline-block; @include displayfix; }
+		}
+	}
+}
+
+.oblique_box	{
+	background: rgba(#040623, 0.8); padding: 1em; color: $white;
+}
+
+
+
+
+// Progress Guage
+.progress_guage		{
+	position: relative; width: 10em; height: 10em; display: inline-block; @include displayfix; padding: 0; margin: 0;
+
+	span		{ float: none; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+}
