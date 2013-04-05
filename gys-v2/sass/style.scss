@@ -309,7 +309,7 @@ body	{ overflow-y: scroll !important; margin: 0 !important;
 	}
 
 	.take_action	{ background: $orange; @include background-image( linear-gradient(top, darken($orange, 10%), lighten($orange, 10%)) ); }
-	.progress		{ display: none; }
+	.progress		{ }
 }
 
 
